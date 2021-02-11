@@ -19,7 +19,7 @@ RSpec.describe Product, type: :model do
       @product = Product.new(name: "soccer shoes", price: "2000", quantity: "5", category_id: @category.id)
       @product.save!
       expect(@product.name).to be_present
-      
+
       @product2 = Product.create(price: "2000", quantity: "5", category_id: @category.id)
       expect(@product2.errors.full_messages).to include("Name can't be blank")
     end
@@ -46,7 +46,7 @@ RSpec.describe Product, type: :model do
       expect(@product2.errors.full_messages).to include("Price can't be blank")
     end
 
-    it 'validates category_id is present when product created' do
+    it 'validates category is present when product created' do
       @category = Category.new(name: "Soccer")
       @category.save!
       @product = Product.new(name: "soccer shoes", price: "2000", quantity: "5", category_id: @category.id)
